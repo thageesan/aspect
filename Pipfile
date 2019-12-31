@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+connexion = {extras = ["swagger-ui"],version = "*"}
+flask_sqlalchemy = "*"
+flask_marshmallow = "*"
+marshmallow-sqlalchemy = "*"
+aspect = {editable = true,path = "."}
+importlib-metadata = "*"
+flup-py3 = "*"
+
+[requires]
+python_version = "3.6.8"

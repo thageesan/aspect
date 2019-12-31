@@ -1,0 +1,5 @@
+.idea
+dev_config.ini
+build
+dist
+aspect.egg-info

@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info:
+  description: API for images.
+  version: 1.0.0
+  title: aspect
+
+servers:
+  - url: http://{environment}/
+    variables:
+      environment:
+        default: photos.preya.thageesan.com
+        enum:
+          - localhost:8080
+          - localhost:5000
+          - dev-photos.preya.thageesan.com
+
+paths:
+  /ping:
+    get:
+      summary: Healtcheck endpoint to see if server is responsive
+      operationId: aspect.api.ping
+      responses:
+        '200':
+          description: A success response to show that the server is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+
+components:
+  responses:
+    BadRequest:
+      description: Passed Invalid Parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    ServerError:
+      description: An exception was thrown based on request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Error:
+      type: object
+      description: Error
+      properties:
+        detail:
+          type: string
+        status:
+          type: number
+        title:
+          type: string
+      required:
+        - detail
+        - status
+        - title
