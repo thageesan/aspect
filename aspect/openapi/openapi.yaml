@@ -5,7 +5,7 @@ info:
   title: aspect
 
 servers:
-  - url: http://{environment}/
+  - url: http://{environment}/api/v1
     variables:
       environment:
         default: photos.preya.thageesan.com
@@ -29,6 +29,36 @@ paths:
                 properties:
                   result:
                     type: string
+  /images:
+    get:
+      summary: Obtains a list of images in a paginated format.
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          required: true
+          description: number of image urls to return
+        - in: query
+          name: offset
+          schema:
+            type: integer
+          required: false
+          description: how many images to skip
+      operationId: aspect.api.get_images
+      responses:
+        '200':
+          description: A success response with a list of image urls
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  images:
+                    type: array
+                    items:
+                      type: string
+
 
 components:
   responses:

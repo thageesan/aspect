@@ -13,6 +13,8 @@ marshmallow-sqlalchemy = "*"
 aspect = {editable = true,path = "."}
 importlib-metadata = "*"
 flup-py3 = "*"
+pymysql = "*"
+marshmallow-jsonapi = "*"
 
 [requires]
 python_version = "3.6.8"
